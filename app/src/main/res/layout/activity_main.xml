@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.YelpSearchActivity"
+    >
+
+  <TextView
+      android:id="@+id/empty_results"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/empty_results"
+      android:padding="20dp"
+      android:textSize="20sp"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      />
+
+  <ProgressBar
+      android:id="@+id/main_progress"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:visibility="gone"
+      android:indeterminateTint="@color/colorPrimary"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      />
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/search_recyclerview"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      tools:context=".ui.SpaceXSearchActivity"
+      tools:listitem="@layout/activity_card_view_item"
+
+      />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

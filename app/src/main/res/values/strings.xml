@@ -1,0 +1,6 @@
+<resources>
+  <string name="app_name">Yelp Search</string>
+  <string name="empty_results">No results found. Please try again.</string>
+  <string name="intro_message">Welcome to Yelp Search! Please search through the toolbar above.</string>
+  <string name="search_hint">Search</string>
+  <string name="location_required_rationale">Location permission is required to provide you accurate search results.</string></resources>
