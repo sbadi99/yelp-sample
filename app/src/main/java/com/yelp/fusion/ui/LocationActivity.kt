@@ -20,6 +20,7 @@ import timber.log.Timber
 
 /**
  * This class primarily handles location permissions and location logic in terms of fetching user's current location.
+ * Also handles permission requests from user before requesting user location
  */
 
 open class LocationActivity : AppCompatActivity(), PermissionCallbacks {
@@ -28,6 +29,16 @@ open class LocationActivity : AppCompatActivity(), PermissionCallbacks {
   private var locationRequest: LocationRequest? = null
   private var locationCallback: LocationCallback? = null
   var currentLocation: Location? = null
+
+  /**
+   * Location permissions
+   */
+  companion object {
+    const val LOCATION_REQUEST_CODE = 1002
+    val locationPermissions = arrayOf(permission.ACCESS_FINE_LOCATION,
+        permission.ACCESS_COARSE_LOCATION)
+  }
+
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -83,11 +94,6 @@ open class LocationActivity : AppCompatActivity(), PermissionCallbacks {
   }
 
 
-  companion object {
-    const val LOCATION_REQUEST_CODE = 1002
-    val locationPermissions = arrayOf(permission.ACCESS_FINE_LOCATION,
-        permission.ACCESS_COARSE_LOCATION)
-  }
 
   /**
    * Using Google's EasyPermission's to handle App-Level permissions.
@@ -145,19 +151,5 @@ open class LocationActivity : AppCompatActivity(), PermissionCallbacks {
   fun hasLocationPermission(): Boolean = EasyPermissions.hasPermissions(this@LocationActivity,
       *locationPermissions)
 
-
-  /**
-   * Note: This method provides only detects if location provider globally is enabled or not
-   * It does not detect App-level location permission is enabled or not
-   */
-  fun isLocationEnabled(context: Context): Boolean {
-    val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-    if (locationManager != null) {
-      Timber.i("location is enabled")
-      return LocationManagerCompat.isLocationEnabled(locationManager)
-    }
-    Timber.i("location is disabled")
-    return false
-  }
 
 }

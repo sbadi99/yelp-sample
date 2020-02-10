@@ -1,7 +1,6 @@
 package com.yelp.fusion.api.retrofit
 
 import android.content.Context
-import android.util.Log
 import com.yelp.fusion.BuildConfig
 import okhttp3.Cache
 import okhttp3.Interceptor
@@ -14,11 +13,13 @@ import retrofit2.Retrofit
 import retrofit2.Retrofit.Builder
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import timber.log.Timber
 import java.io.File
 import java.util.concurrent.TimeUnit.SECONDS
 
 /**
- *
+ * This class handles setup and creating of retrofit api client and related logic
+ * Also passing Yelp Fusion API_KEY in headers per Yelp documentation
  */
 object Network {
 
@@ -39,14 +40,16 @@ object Network {
       val httpCacheDirectory = File(context?.getCacheDir(), "http-cache")
       cache = Cache(httpCacheDirectory, cacheSize.toLong())
     } catch (e: Exception) {
-      e.printStackTrace()
-      Log.e("error", "Failed to create create Cache!")
+      Timber.e("Failed to create create Cache!" + e)
     }
-
     return cache
   }
 
 
+  /**
+   * Creates the retrofit client
+   * @param the context passed
+   */
   private fun createRetrofitClient(context: Context?): YelpApi {
     val builder = OkHttpClient().newBuilder()
         .cache(createCache(context))

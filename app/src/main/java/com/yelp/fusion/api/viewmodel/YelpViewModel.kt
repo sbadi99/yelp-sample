@@ -15,8 +15,14 @@ import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
 import timber.log.Timber
 
+/**
+ * The YelpViewModel includes LiveData objects (MVVM approach per Android archectural components)
+ * Using RxJava as well in conjuction with LiveData
+ */
+
 class YelpViewModel(private val yelpApi: YelpApi) : ViewModel() {
   private val compositeDisposable = CompositeDisposable()
+
   var yelpLiveDataAutoComplete = MutableLiveData<List<TermsItem?>>()
   var yelpLiveDataSearch = MutableLiveData<List<BusinessesItem?>>()
 

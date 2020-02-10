@@ -7,6 +7,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+
 interface YelpApi {
   @GET("v3/autocomplete")
   fun getAutoComplete(@Query("text") text: String, @Query("latitude") lat:Double, @Query("longitude")lng:Double): Observable<Response<AutoCompleteResponse>>

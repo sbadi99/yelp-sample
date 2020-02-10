@@ -34,7 +34,7 @@ import kotlinx.android.synthetic.main.activity_main.search_recyclerview
 import timber.log.Timber
 
 /**
- * This Activity provides the core Yelp Search UI
+ * This Activity provides the core Yelp Search UI.
  * Utilizes search icon in Android toolbar.
  * Also uses native Android SearchView widget
  */
@@ -161,7 +161,10 @@ class YelpSearchActivity : LocationActivity() {
   }
 
   /**
+   * Note: launch mode of activity is 'single-top' to prevent multiple nested activity instances from launching,
+   * so onNewIntent will fire here instead on the normal onCreate (since activity laucnch mode is 'single-top'
    * This method handles the search query flow in the native Android search view in the toolbar
+   * @param the intent passed
    */
   override fun onNewIntent(intent: Intent?) {
     super.onNewIntent(intent)
@@ -220,17 +223,22 @@ class YelpSearchActivity : LocationActivity() {
 
         override fun onQueryTextChange(query: String?): Boolean {
           isAutoComplete = true
+
+          //has location permission
           if(hasLocationPermission()){
             currentLocation?.longitude?.let {lng->
               currentLocation?.latitude?.let { lat ->
+                //fetch auto complete data from yelp here
                 yelpViewModel?.fetchAutoComplete(query.toString(), lat, lng)
               }
             }
           }
           else{
+            //check location permission
             checkLocationPermission()
           }
 
+          //add suggestions to the cursor adapter
           val cursor = MatrixCursor(arrayOf(BaseColumns._ID, SearchManager.SUGGEST_COLUMN_TEXT_1))
           query?.let {
             suggestions?.forEachIndexed { index, suggestion ->
@@ -238,7 +246,6 @@ class YelpSearchActivity : LocationActivity() {
                 cursor.addRow(arrayOf(index, suggestion))
             }
           }
-
           cursorAdapter.changeCursor(cursor)
           return true
         }
@@ -249,6 +256,9 @@ class YelpSearchActivity : LocationActivity() {
           return false
         }
 
+        /**
+         * The suggestion click listener
+         */
         override fun onSuggestionClick(position: Int): Boolean {
           hideKeyboard(currentFocus ?: View(this@YelpSearchActivity))
           val cursor = searchView.suggestionsAdapter.getItem(position) as Cursor
@@ -262,11 +272,14 @@ class YelpSearchActivity : LocationActivity() {
         }
 
       })
-
     }
     return true
   }
 
+  /**
+   * Make yelp search call to get buiness data
+   * @param the search query
+   */
   private fun makeBusinessApiCall(searchQuery: String) {
     when {
       hasLocationPermission() -> {
@@ -301,6 +314,12 @@ class YelpSearchActivity : LocationActivity() {
     yelpViewModel = ViewModelProviders.of(this, viewModelFactory).get(YelpViewModel::class.java)
   }
 
+
+  /**
+   * Location permission is granted by user,
+   * fetch users latest location update
+   * Also trigger corresponding auto complete or business search call depending on the user flow
+   */
   override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
     super.onPermissionsGranted(requestCode, perms)
     startLocationUpdates()
@@ -323,7 +342,10 @@ class YelpSearchActivity : LocationActivity() {
 
   }
 
-
+  /**
+   * Hide the keyboard
+   * @param the view
+   */
   fun Context.hideKeyboard(view: View) {
     val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)

@@ -46,7 +46,7 @@ class YelpViewModelTest {
 
   @Before
   fun setUp() {
-    //TODO: setup mock test server
+    //TODO: setup mock test server?
     // initialize the ViewModed with a mocked api
     yelpViewModel = YelpViewModel(yelpApi)
   }

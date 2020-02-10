@@ -6,6 +6,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.yelp.fusion.R
 
+/**
+ * Content ViewHolder containing search results item elements
+ */
+
 class YelpRecyclerViewItemHolder(itemView: View?) : ViewHolder(
     itemView!!) {
   var businessName: TextView? = null

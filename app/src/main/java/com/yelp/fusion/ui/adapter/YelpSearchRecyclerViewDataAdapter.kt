@@ -7,9 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.squareup.picasso.Picasso
+import com.yelp.fusion.api.model.search.BusinessesItem
 import com.yelp.fusion.R
 
-import com.yelp.fusion.api.model.search.BusinessesItem
+/**
+ * The YelpSearchRecyclerViewDataAdapter item adapter class extends RecyclerView.Adapter
+ */
 
 class YelpSearchRecyclerViewDataAdapter(
     var itemList: ArrayList<BusinessesItem?>) : Adapter<YelpRecyclerViewItemHolder>() {
