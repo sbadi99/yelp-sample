@@ -4,7 +4,7 @@
 * From a architecture standpoint, used the LiveData/ViewModel approach and best practices (MVVM) (per Android architectural components) to allow for UI layer to be decoupled from the business layer. 
 * It uses the latest androidx framework (rather than older support libraries).
 * From a UI standpoint, leveraged latest androidx cardviews and Recyclerviews
-* Also handled Location management and user location permission scenarios to streamiline fetching of user's "current location". Getting user "last location"(current location) directly is not always reliable and may return null. Therefore, imlplemented a more extensive and more reliable "Location update" approach instead.   
+* Also handled Location management and user location permission scenarios to streamiline fetching of user's "current location". Getting user "last location"(current location) directly is not always reliable and may return null. Therefore, implemented a more extensive and more reliable "Location update" approach instead.   
 
 Extras: I implemented "auto-complete" for better end-user expereince.
 
