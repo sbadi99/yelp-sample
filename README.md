@@ -8,7 +8,7 @@
 
 Extras: I implemented "auto-complete" for better end-user expereince.
 
-Todos and challenges : Due to time constraint & time limit on the project, I have the testing framework already in place to test the viewmodels and live data e.t.c but I was attempting to setup a "mock server" to properly test items, ran into some issues setting up the mock server and data, need to address that going forward.
+Next Steps (Todos and challenges) : Due to time constraint & time limit on the project, I have the testing framework already in place to test the viewmodels and live data e.t.c but I was attempting to setup a "mock server" to properly test items, ran into some issues setting up the "mock server" and data, need some more time to address that going forward.
 
 If the team has any questions or need any clarification during the review process let me know, and I will be happy to address any queries the team may have.
 
