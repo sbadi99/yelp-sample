@@ -153,7 +153,6 @@ class YelpSearchActivity : LocationActivity() {
    */
   private fun setupUi() {
     searchRecyclerView = search_recyclerview
-    //searchRecyclerView?.layoutManager = LinearLayoutManager(this)
     // Create the grid layout manager with 2 columns.
     val gridLayoutManager = GridLayoutManager(this, 2)
     searchRecyclerView?.layoutManager = gridLayoutManager

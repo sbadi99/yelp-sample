@@ -58,7 +58,7 @@ class YelpViewModel(private val yelpApi: YelpApi) : ViewModel() {
           override fun onComplete() {}
 
           override fun onError(e: Throwable) {
-            yelpLiveDataAutoComplete.value = null
+            yelpLiveDataSearch.value = null
             Timber.e("error$e")
 
           }
