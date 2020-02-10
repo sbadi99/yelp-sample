@@ -12,14 +12,13 @@ Next Steps (Todos and challenges) : Due to time constraint & time limit on the p
 
 If the team has any questions or need any clarification during the review process let me know, and I will be happy to address any queries the team may have.
 
-![Alt text](./device-2020-02-09-165243.png?raw=true "Optional Title")
+![Alt text](./device-2020-02-09-173305.png?raw=true "Optional Title")
 
+![Alt text](./device-2020-02-09-165243.png?raw=true "Optional Title")
 
 ![Alt text](./device-2020-02-09-165330.png?raw=true "Optional Title")
 
-
 ![Alt text](./device-2020-02-09-165401.png?raw=true "Optional Title")
-
 
 ![Alt text](./device-2020-02-09-165505.png?raw=true "Optional Title")
 
